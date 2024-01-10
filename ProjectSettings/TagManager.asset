@@ -4,8 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Enemy
   - Enemie
+=======
+  - Key
+  - Pipe
+  - Scroll
+>>>>>>> f5e7e98a42fcf0a22a9cd845586a0c411ba1d7df
   layers:
   - Default
   - TransparentFX
@@ -42,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: bg
+    uniqueID: 600966913
     locked: 0
