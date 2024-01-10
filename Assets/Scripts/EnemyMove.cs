@@ -18,6 +18,8 @@ public class EnemyMovement : MonoBehaviour
     public GameObject target;
 
     private bool seePlayer;
+    public NavMeshAgent agent;
+
 
 
     void Start()
@@ -52,13 +54,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    var Heading = target.transform.position - transform.position;
-                    var Distance = Heading.magnitude;
-                    var Direction = Heading / Distance;
-
-                    Vector3 Move = new Vector3(Direction.x * Speed, 0, Direction.z * Speed);
-                    rigi.velocity = Move;
-                    transform.forward = Move;
+                    agent.SetDestination(target.transform.position);
                 }
             }
         }
