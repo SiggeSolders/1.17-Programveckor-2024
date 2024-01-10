@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-  - Pipe
-  - Scroll
-  - Key
-  - Enemy
->>>>>>> 660e94beeb2e35dade0494f640c5dac356980a97
   layers:
   - Default
   - TransparentFX
@@ -19,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - player
+  - 
   - 
   - 
   - 
