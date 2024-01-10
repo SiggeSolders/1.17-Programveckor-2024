@@ -33,13 +33,12 @@ public class PickupManager : MonoBehaviour
             bool hold1 = false;
 
             hold1 = true;
-            while (hold1)
+            if(hold1)
             {
                 pickUp1.transform.position = transform.position + new Vector3(1, 1, 0);
                 if (Input.GetKey(KeyCode.Q))
                 {
                     hold1 = false;
-                    break;
                     holding--;
                 }
             }
