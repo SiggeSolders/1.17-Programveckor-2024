@@ -5,45 +5,69 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject pickUp1;
+    public Transform equipPos;
+    public float equipDistance = 10f;
+    GameObject holding;
+    GameObject item;
 
+    bool grabbable = false;
 
-    int holding = 0;
-
-    // Start is called before the first frame update
-    void Start()
+    private void FixedUpdate()
     {
+        CheckItem();
 
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.E))
+        if (grabbable)
         {
-            PickUp();
-            holding++;
-        }
-
- 
-    }
-    void PickUp()
-    {
-            bool hold1 = false;
-
-            hold1 = true;
-            while (hold1)
+            if (Input.GetKey(KeyCode.E))
             {
-                pickUp1.transform.position = transform.position + new Vector3(1, 1, 0);
-                if (Input.GetKey(KeyCode.Q))
+                if(holding != null)
                 {
-                    hold1 = false;
-                    break;
-                    holding--;
+                    Debug.Log("GRAB");
+                    Drop();
+                    PickUp();
                 }
             }
+        }
+        if (holding != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Drop();
+            }
+        }
+    }
+private void CheckItem()
+    {
+        RaycastHit hit;
 
-        
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward,out hit, equipDistance))
+        {
+            if (hit.transform.tag == "Grabable")
+            {
+                grabbable = true;
+                item = hit.transform.gameObject;
+            }
+        }
+        else
+        {
+            grabbable = false;
+        }
+    }
+
+    void PickUp()
+    {
+        Debug.Log("huh");
+        holding = item;
+        holding.transform.position = equipPos.transform.position;
+        holding.transform.parent = equipPos;
+        holding.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+        holding.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    private void Drop()
+    {
+        holding.GetComponent<Rigidbody>().isKinematic = false;
+        holding.transform.parent = null;
+        holding = null;
     }
 }
