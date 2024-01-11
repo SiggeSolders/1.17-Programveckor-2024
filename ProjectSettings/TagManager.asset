@@ -3,11 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Pipe
-  - Scroll
-  - Key
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -15,11 +11,15 @@ TagManager:
   - 
   - Water
   - UI
-  - player
+<<<<<<< HEAD
+  - 
+=======
+>>>>>>> 95c1205d78bd1547f563df8b990f8da701c205da
   - 
   - 
   - 
   - 
+  - whatIsGround
   - 
   - 
   - 
