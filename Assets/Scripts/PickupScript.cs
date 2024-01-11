@@ -19,6 +19,8 @@ public class PickupScript : MonoBehaviour
     [SerializeField]
     GameObject pickUpText;
 
+ 
+
     TextMeshProUGUI textComponent;
 
     // Start is called before the first frame update
@@ -68,6 +70,7 @@ public class PickupScript : MonoBehaviour
             {
                 Item = hit.transform.gameObject;
                 Item.SetActive(false);
+                GoAway();
                 holdScroll = true;
                 pickUpText.SetActive(true);
                 name = "Scroll";

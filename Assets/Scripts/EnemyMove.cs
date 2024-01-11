@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Rigidbody rigi;
     public GameObject target;
+    public GameObject self;
 
     private bool seePlayer;
     public NavMeshAgent agent;
@@ -58,5 +59,18 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void GoAway()
+    {
+        agent.SetDestination(self.transform.position);
+        StartCoroutine(Delay());
+ 
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(5);
+        agent.SetDestination(target.transform.position);
     }
 }
