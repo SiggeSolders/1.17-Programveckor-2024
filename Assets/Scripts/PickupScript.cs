@@ -19,7 +19,7 @@ public class PickupScript : MonoBehaviour
     [SerializeField]
     GameObject pickUpText;
 
- 
+    EnemyMovement enemy;
 
     TextMeshProUGUI textComponent;
 
@@ -29,6 +29,7 @@ public class PickupScript : MonoBehaviour
         pickUpText.SetActive(false);
         textComponent = pickUpText.GetComponent<TextMeshProUGUI>();
         StartCoroutine(Timer());
+        enemy = FindAnyObjectByType<EnemyMovement>();
     }
 
     // Update is called once per frame
@@ -70,7 +71,7 @@ public class PickupScript : MonoBehaviour
             {
                 Item = hit.transform.gameObject;
                 Item.SetActive(false);
-                GoAway();
+                enemy.GoAway();
                 holdScroll = true;
                 pickUpText.SetActive(true);
                 name = "Scroll";
