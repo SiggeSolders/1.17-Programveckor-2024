@@ -16,7 +16,7 @@ public class door : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //3rmnkrnh2ukhrkuq
     }
 
     // Update is called once per frame
