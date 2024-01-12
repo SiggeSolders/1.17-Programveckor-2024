@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Key
   - Enemy
-  - Scroll
-  - wall
+  - Key
+  - Pipe
+  - IsGround 2
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - IsGround
   - 
   - 
   - 
