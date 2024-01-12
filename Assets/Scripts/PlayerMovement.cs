@@ -45,12 +45,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //Ground Check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f));
         MyInput();
 
         //Drag
         if (grounded)
         {
+            print("mark");
             rb.drag = groundDrag;
         }
         else
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         //Jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
-            Console.WriteLine("Försökte Hoppa");
+            Debug.Log("Försökte Hoppa");
             readyToJump = false;
 
             Jump();
