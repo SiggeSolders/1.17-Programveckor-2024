@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class EnemyMovement : MonoBehaviour
 
     public Rigidbody rigi;
     public GameObject target;
+    [SerializeField]
     public GameObject self;
 
     private bool seePlayer;
     public NavMeshAgent agent;
+    [SerializeField]
+    GameObject deathText;
 
 
 
@@ -27,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody>();
         Speed = maxSpeed;
+        deathText.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
@@ -61,16 +67,39 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject playerDeath = collision.gameObject;
+
+        if(playerDeath.transform.tag == "Player")
+        {
+            deathText.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+        }
+    }
+
     public void GoAway()
     {
-        agent.SetDestination(self.transform.position);
+        Debug.Log("GO");
+        agent.speed = 0;
+
         StartCoroutine(Delay());
  
     }
 
     IEnumerator Delay()
     {
+        Debug.Log("WAINTING");
         yield return new WaitForSeconds(5);
-        agent.SetDestination(target.transform.position);
+        agent.speed = 5;
     }
+
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+
 }

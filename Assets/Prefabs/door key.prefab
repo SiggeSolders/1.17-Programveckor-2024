@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6228535879672600514, guid: d93528ca9eb994a4da3f404b51912160, type: 3}
       propertyPath: m_Name
-      value: GameObject Variant
+      value: door key
       objectReference: {fileID: 0}
     - target: {fileID: 7748361158749592920, guid: d93528ca9eb994a4da3f404b51912160, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,7 +56,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8176053433817870572, guid: d93528ca9eb994a4da3f404b51912160, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
