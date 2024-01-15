@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,9 @@ public class EnemyMovement : MonoBehaviour
     public NavMeshAgent agent;
     [SerializeField]
     GameObject deathText;
+    [SerializeField]
+    GameObject crossHair;
+
 
 
 
@@ -33,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
         Speed = maxSpeed;
         deathText.SetActive(false);
         Time.timeScale = 1;
+        crossHair.SetActive(true);
     }
 
 
@@ -74,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
         if(playerDeath.transform.tag == "Player")
         {
             deathText.SetActive(true);
+            crossHair.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
