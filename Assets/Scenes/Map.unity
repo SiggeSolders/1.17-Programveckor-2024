@@ -3372,9 +3372,40 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 920015083}
   m_Material: {fileID: 0}
   m_IncludeLayers:
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934965823}
+  - component: {fileID: 934965822}
+  - component: {fileID: 934965821}
+  - component: {fileID: 934965820}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &934965820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934965819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+>>>>>>> parent of 7e1925c (Merge branch 'main' of https://github.com/SiggeSolders/1.17-Programveckor-2024)
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
@@ -7602,8 +7633,17 @@ SceneRoots:
   - {fileID: 350608167}
   - {fileID: 498597359}
   - {fileID: 2097994493}
+<<<<<<< HEAD
   - {fileID: 1796999772}
   - {fileID: 1276490765}
   - {fileID: 2019890515}
   - {fileID: 1241190998}
   - {fileID: 1457916440}
+=======
+  - {fileID: 535110977}
+  - {fileID: 1725397464}
+  - {fileID: 934965823}
+  - {fileID: 2145083293}
+  - {fileID: 1131812566}
+  - {fileID: 464314573}
+>>>>>>> parent of 7e1925c (Merge branch 'main' of https://github.com/SiggeSolders/1.17-Programveckor-2024)
