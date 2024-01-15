@@ -8,6 +8,8 @@ TagManager:
   - Key
   - Pipe
   - IsGround 2
+  - Scroll
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Text
   - 
   - 
   - 
@@ -44,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Crosshair
+    uniqueID: 2742941127
     locked: 0
