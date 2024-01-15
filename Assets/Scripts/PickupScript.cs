@@ -18,6 +18,15 @@ public class PickupScript : MonoBehaviour
     string name;
     [SerializeField]
     GameObject pickUpText;
+<<<<<<< Updated upstream
+=======
+    [SerializeField]
+    AudioSource boom;
+    [SerializeField]
+    GameObject holdPos;
+    [SerializeField]
+    GameObject pipe;
+>>>>>>> Stashed changes
 
     EnemyMovement enemy;
 
@@ -60,7 +69,8 @@ public class PickupScript : MonoBehaviour
             if (hit.transform.tag == "Pipe")
             {
                 Item = hit.transform.gameObject;
-                Item.SetActive(false);
+                pipe.transform.parent = Camera.transform;
+                pipe.transform.position = holdPos.transform.position;
                 holdPipe = true;
                 pickUpText.SetActive(true);
                 name = "Pipe";
