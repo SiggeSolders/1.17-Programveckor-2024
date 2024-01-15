@@ -8,7 +8,11 @@ public class LLLock : MonoBehaviour
     void Start()
     {
         Rigidbody rigid = GetComponent<Rigidbody>();
+<<<<<<< Updated upstream
         rigid.constraints = RigidbodyConstraints.FreezeRotationY;
+=======
+        rigid.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY;
+>>>>>>> Stashed changes
     }
     int hp = 1;
     
