@@ -18,6 +18,8 @@ public class PickupScript : MonoBehaviour
     string name;
     [SerializeField]
     GameObject pickUpText;
+    [SerializeField]
+    AudioSource boom;
 
     EnemyMovement enemy;
 
@@ -60,6 +62,8 @@ public class PickupScript : MonoBehaviour
             }
             if (hit.transform.tag == "Pipe")
             {
+                Debug.Log("PIPE");
+                boom.Play();
                 Item = hit.transform.gameObject;
                 Item.SetActive(false);
                 holdPipe = true;
