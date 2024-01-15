@@ -20,6 +20,10 @@ public class PickupScript : MonoBehaviour
     GameObject pickUpText;
     [SerializeField]
     AudioSource boom;
+    [SerializeField]
+    GameObject daPos;
+    [SerializeField]
+    GameObject Pipe;
 
     EnemyMovement enemy;
 
@@ -64,8 +68,8 @@ public class PickupScript : MonoBehaviour
             {
                 Debug.Log("PIPE");
                 boom.Play();
-                Item = hit.transform.gameObject;
-                Item.SetActive(false);
+                Pipe.transform.parent = Camera.transform;
+                Pipe.transform.position = daPos.transform.position;
                 holdPipe = true;
                 pickUpText.SetActive(true);
                 name = "Pipe";
