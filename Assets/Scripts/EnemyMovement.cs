@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
 
 
+
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
