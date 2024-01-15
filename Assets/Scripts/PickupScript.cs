@@ -49,6 +49,7 @@ public class PickupScript : MonoBehaviour
         {
             if (hit.transform.tag == "Key")
             {
+                Debug.Log("yuuuh");
                 Item = hit.transform.gameObject;
                 name = "Key";
                 Item.SetActive(false);
