@@ -7,8 +7,7 @@ public class LLLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rigid = GetComponent<Rigidbody>();
-        rigid.constraints = RigidbodyConstraints.FreezeRotationY;
+        
     }
     int hp = 1;
     
@@ -18,8 +17,13 @@ public class LLLock : MonoBehaviour
         hp -= 1;
         if (hp == 0)
         {
-            Rigidbody rigid = GetComponent<Rigidbody>();
-            rigid.constraints = RigidbodyConstraints.None;
+            HingeJoint hinge = GetComponent<HingeJoint>();
+            JointLimits limits = hinge.limits;
+            limits.min = -90;
+            limits.max = 90;
+            hinge.limits = limits;
+            hinge.useLimits = true;
+
         }
     }
 
