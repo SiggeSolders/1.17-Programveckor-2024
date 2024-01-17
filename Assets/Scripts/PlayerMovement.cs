@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [HideInInspector] public StamminaControler _stamminaControler;
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
+    public float walkspeed;
+    public float sprintspeed;
 
     public float groundDrag;
 
@@ -17,11 +20,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode Sprintkey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+    
+    public bool runCooldown = false;
 
     public Transform orientetion;
 
@@ -31,15 +37,26 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movedirection;
 
     Rigidbody rb;
-    // Start is called before the first frame update
+
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        air
+    }
     void Start()
     {
+        _stamminaControler = GetComponent<StamminaControler>();
         rb = GetComponent < Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
     }
 
-    
+    public void setRunsSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -47,40 +64,72 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f));
         MyInput();
+        SpeedControl();
+        StateHandler();
 
         //Drag
         if (grounded)
         {
-            print("mark");
             rb.drag = groundDrag;
         }
         else
         {
             rb.drag = 0;
         }
-
-        SpeedControl();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
     }
+    
+    private void StateHandler()
+    {
+        if(grounded && Input.GetKey(Sprintkey) && _stamminaControler.playerStammina > 0 && runCooldown == false)
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintspeed;
+
+        }else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkspeed;
+        }
+        else
+        {
+            state = MovementState.air;
+        }
+    }
     private void MyInput()
     {
         horizontalImput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        if(state == MovementState.sprinting)
+        {
+            if(_stamminaControler.playerStammina > 0)
+            {
+                _stamminaControler.Sprinting = true;
+                _stamminaControler.IsSprinting();
+            }
+        }
+        if(state == MovementState.walking)
+        {
+            _stamminaControler.Sprinting = false;
+        }
         //Jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
-            Debug.Log("Försökte Hoppa");
-            readyToJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
+            _stamminaControler.StamminaJump();
         }
+    }
+
+    public void PlayerJump()
+    {
+        readyToJump = false;
+
+        Jump();
+
+        Invoke(nameof(ResetJump), jumpCooldown);
     }
     private void MovePlayer()
     {
@@ -112,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Jump()
     {
-        Console.WriteLine("Space");
+        
         // Kollar Y
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
