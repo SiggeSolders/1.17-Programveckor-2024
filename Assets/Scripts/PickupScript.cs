@@ -32,10 +32,12 @@ public class PickupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        holdKey = false;
         pickUpText.SetActive(false);
         textComponent = pickUpText.GetComponent<TextMeshProUGUI>();
         StartCoroutine(Timer());
         enemy = FindAnyObjectByType<EnemyMovement>();
+
     }
 
     // Update is called once per frame
@@ -70,6 +72,8 @@ public class PickupScript : MonoBehaviour
                 boom.Play();
                 Pipe.transform.parent = Camera.transform;
                 Pipe.transform.position = daPos.transform.position;
+                Collider collider = Pipe.GetComponent<BoxCollider>();
+                collider.enabled = false;
                 holdPipe = true;
                 pickUpText.SetActive(true);
                 name = "Pipe";
