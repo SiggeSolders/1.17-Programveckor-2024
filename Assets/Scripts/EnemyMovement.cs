@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class EnemyMovement : MonoBehaviour
     GameObject deathText;
     [SerializeField]
     GameObject crossHair;
+    [SerializeField]
+    VideoPlayer death;
+
 
 
 
@@ -78,11 +82,9 @@ public class EnemyMovement : MonoBehaviour
 
         if(playerDeath.transform.tag == "Player")
         {
-            deathText.SetActive(true);
-            crossHair.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0;
+            death.Play();
+            StartCoroutine(Video());
+
         }
     }
 
@@ -93,6 +95,15 @@ public class EnemyMovement : MonoBehaviour
 
         StartCoroutine(Delay());
  
+    }
+    IEnumerator Video()
+    {
+        yield return new WaitForSeconds(5);
+        deathText.SetActive(true);
+        crossHair.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
     }
 
     IEnumerator Delay()
