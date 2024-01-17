@@ -24,6 +24,8 @@ public class PickupScript : MonoBehaviour
     GameObject daPos;
     [SerializeField]
     GameObject Pipe;
+    [SerializeField]
+    GameObject Pipe2;
 
     EnemyMovement enemy;
 
@@ -74,6 +76,20 @@ public class PickupScript : MonoBehaviour
                 Pipe.transform.position = daPos.transform.position;
                 Collider collider = Pipe.GetComponent<BoxCollider>();
                 collider.enabled = false;
+                holdPipe = true;
+                pickUpText.SetActive(true);
+                name = "Pipe";
+                textComponent.text = "You Picked Up A " + name + "!";
+                StartCoroutine(Timer());
+            }
+            if (hit.transform.tag == "Pipe2")
+            {
+                Debug.Log("PIPE");
+                boom.Play();
+                Pipe2.transform.parent = Camera.transform;
+                Pipe2.transform.position = daPos.transform.position;
+                Collider collider2 = Pipe2.GetComponent<BoxCollider>();
+                collider2.enabled = false;
                 holdPipe = true;
                 pickUpText.SetActive(true);
                 name = "Pipe";

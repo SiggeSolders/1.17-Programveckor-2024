@@ -28,10 +28,11 @@ public class NewBehaviourScript : MonoBehaviour
         glasväg hitglas = otherGameObject.GetComponent<glasväg>();
         //if (hitenemy != null)
         //{
-          //  hitenemy.TakeDamage();
+        //  hitenemy.TakeDamage();
 
         //}
-        if (pickup.holdKey == true)
+        GameObject play = collision.gameObject;
+        if (pickup.holdKey == true && play.transform.tag == "Door")
         {
             if (hitLock != null)
             {

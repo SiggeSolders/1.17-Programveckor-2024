@@ -10,6 +10,7 @@ TagManager:
   - IsGround 2
   - Scroll
   - wall
+  - Pipe2
   layers:
   - Default
   - TransparentFX
