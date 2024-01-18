@@ -11235,6 +11235,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7148456122503402237, guid: 4f603d37e81b4914e987f35126203760, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148456122503402237, guid: 4f603d37e81b4914e987f35126203760, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bc3eba6f5e7a644e9258b7e885fec62, type: 3}
+    - target: {fileID: 7148456122503402237, guid: 4f603d37e81b4914e987f35126203760, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7633296516190320212, guid: 4f603d37e81b4914e987f35126203760, type: 3}
       propertyPath: death
       value: 
