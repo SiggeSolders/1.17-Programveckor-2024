@@ -59,7 +59,6 @@ public class PickupScript : MonoBehaviour
         {
             if (hit.transform.tag == "Key")
             {
-                Debug.Log("yuuuh");
                 Item = hit.transform.gameObject;
                 name = "Key";
                 Item.SetActive(false);
@@ -70,7 +69,6 @@ public class PickupScript : MonoBehaviour
             }
             if (hit.transform.tag == "Pipe")
             {
-                Debug.Log("PIPE");
                 boom.Play();
                 Pipe.transform.parent = Camera.transform;
                 Pipe.transform.position = daPos.transform.position;
@@ -84,7 +82,6 @@ public class PickupScript : MonoBehaviour
             }
             if (hit.transform.tag == "Pipe2")
             {
-                Debug.Log("PIPE");
                 boom.Play();
                 Pipe2.transform.parent = Camera.transform;
                 Pipe2.transform.position = daPos.transform.position;
