@@ -1521,8 +1521,16 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1160512702197040562, guid: dc0dad991e982014a9601140be69c04a, type: 3}
+      propertyPath: walkspeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1160512702197040562, guid: dc0dad991e982014a9601140be69c04a, type: 3}
       propertyPath: groundDrag
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1160512702197040562, guid: dc0dad991e982014a9601140be69c04a, type: 3}
+      propertyPath: sprintspeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1160512702197040562, guid: dc0dad991e982014a9601140be69c04a, type: 3}
       propertyPath: jumpCooldown
@@ -1692,6 +1700,7 @@ MonoBehaviour:
   boom: {fileID: 1152660383}
   daPos: {fileID: 0}
   Pipe: {fileID: 0}
+  Pipe2: {fileID: 0}
 --- !u!82 &143475725
 AudioSource:
   m_ObjectHideFlags: 0
