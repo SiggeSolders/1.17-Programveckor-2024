@@ -31,9 +31,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     VideoPlayer death;
 
-    [SerializeField]
-    AudioSource audi;
-
 
 
 
@@ -73,7 +70,6 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    audi.Play();
                     agent.SetDestination(target.transform.position);
                 }
             }
