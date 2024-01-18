@@ -38,6 +38,7 @@ public class NewBehaviourScript : MonoBehaviour
             Debug.Log("har nyckel");
             if (hitLock != null)
             {
+                Debug.Log("har nyckel");
                 hitLock.TakeLock();
 
             }
