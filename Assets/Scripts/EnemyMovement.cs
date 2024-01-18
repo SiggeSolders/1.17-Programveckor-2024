@@ -115,7 +115,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void returnToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
 
