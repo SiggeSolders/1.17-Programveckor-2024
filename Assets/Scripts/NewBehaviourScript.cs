@@ -32,13 +32,10 @@ public class NewBehaviourScript : MonoBehaviour
 
         //}
         GameObject play = collision.gameObject;
-        Debug.Log("gick in i dör");
         if (pickup.holdKey == true)
         {
-            Debug.Log("har nyckel");
             if (hitLock != null)
             {
-                Debug.Log("har nyckel");
                 hitLock.TakeLock();
 
             }
