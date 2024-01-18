@@ -63,5 +63,7 @@ public class OutroSkript : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

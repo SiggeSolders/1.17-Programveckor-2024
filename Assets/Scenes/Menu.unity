@@ -593,14 +593,14 @@ RectTransform:
   m_GameObject: {fileID: 817951549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 435567113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.9, y: 89.3}
+  m_AnchoredPosition: {x: -631.59, y: -200.89}
   m_SizeDelta: {x: 305.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817951551
@@ -632,17 +632,20 @@ MonoBehaviour:
 
     Space - Jump
 
-    Document
-    - freezes the enemy for 5 seconds
+    Sprint
+    - Shift
 
-    Walk into doors to open
+    Document - freezes the enemy for 5 seconds
 
-    Key - unlocks
-    doors
+    Walk into doors
+    to open
+
+    Key - unlocks doors
 
     Pipe - Smashes windows
 
-    Jump into windows to smash
+    Jump into windows
+    to smash
 
 '
   m_isRightToLeft: 0
@@ -841,8 +844,8 @@ RectTransform:
   m_GameObject: {fileID: 1345618262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.66, y: 3.3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 3.9759037, z: 1.2048193}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1627167778}
   m_Father: {fileID: 435567113}
@@ -974,8 +977,8 @@ RectTransform:
   m_GameObject: {fileID: 1526531118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.66, y: 3.3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 3.9759037, z: 1.2048193}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 680257006}
   m_Father: {fileID: 435567113}
