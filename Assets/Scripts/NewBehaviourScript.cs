@@ -32,8 +32,10 @@ public class NewBehaviourScript : MonoBehaviour
 
         //}
         GameObject play = collision.gameObject;
-        if (pickup.holdKey == true && play.transform.tag == "Door")
+        Debug.Log("gick in i dör");
+        if (pickup.holdKey == true)
         {
+            Debug.Log("har nyckel");
             if (hitLock != null)
             {
                 hitLock.TakeLock();
