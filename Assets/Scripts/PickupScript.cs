@@ -60,11 +60,11 @@ public class PickupScript : MonoBehaviour
             if (hit.transform.tag == "Key")
             {
                 Item = hit.transform.gameObject;
-                name = "Key";
+                name = "Nyckel";
                 Item.SetActive(false);
                 holdKey = true;
                 pickUpText.SetActive(true);
-                textComponent.text = "You Picked Up A " + name + "!";
+                textComponent.text = "Du Plockade Upp En " + name + "!";
                 StartCoroutine(Timer());
             }
             if (hit.transform.tag == "Pipe")
@@ -76,8 +76,8 @@ public class PickupScript : MonoBehaviour
                 collider.enabled = false;
                 holdPipe = true;
                 pickUpText.SetActive(true);
-                name = "Pipe";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Rör";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
             if (hit.transform.tag == "Pipe2")
@@ -89,8 +89,8 @@ public class PickupScript : MonoBehaviour
                 collider2.enabled = false;
                 holdPipe = true;
                 pickUpText.SetActive(true);
-                name = "Pipe";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Rör";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
             if (hit.transform.tag == "Scroll")
@@ -100,8 +100,8 @@ public class PickupScript : MonoBehaviour
                 enemy.GoAway();
                 holdScroll = true;
                 pickUpText.SetActive(true);
-                name = "Scroll";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Dokument";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
 
