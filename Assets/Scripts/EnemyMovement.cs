@@ -83,7 +83,9 @@ public class EnemyMovement : MonoBehaviour
         if(playerDeath.transform.tag == "Player")
         {
             death.Play();
+            Time.timeScale = 0;
             StartCoroutine(Video());
+
 
         }
     }
@@ -92,18 +94,17 @@ public class EnemyMovement : MonoBehaviour
     {
         Debug.Log("GO");
         agent.speed = 0;
-
         StartCoroutine(Delay());
  
     }
     IEnumerator Video()
     {
         yield return new WaitForSeconds(5);
+        Time.timeScale = 1;
         deathText.SetActive(true);
         crossHair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0;
     }
 
     IEnumerator Delay()
