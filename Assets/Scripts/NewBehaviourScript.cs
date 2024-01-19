@@ -45,6 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
             if (hitglas != null)
             {
                 hitglas.Destroywindow();
+                pickup.holdPipe = false;
 
             }
         }

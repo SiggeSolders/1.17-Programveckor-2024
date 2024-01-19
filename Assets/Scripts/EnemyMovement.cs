@@ -99,8 +99,8 @@ public class EnemyMovement : MonoBehaviour
     }
     IEnumerator Video()
     {
-        yield return new WaitForSeconds(5);
         Time.timeScale = 1;
+        yield return new WaitForSeconds(5);
         deathText.SetActive(true);
         crossHair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
