@@ -16,7 +16,7 @@ public class StamminaControler : MonoBehaviour
     
 
     [Header("Stammina regen")]
-    [Range(0, 50)] private float StamminaRegen = 2.5f;
+    [Range(0, 50)] private float StamminaRegen = 3f;
     [Range(0, 50)] private float StamminaDrain = 5f;
 
 
