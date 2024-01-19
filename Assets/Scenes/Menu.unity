@@ -489,7 +489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: "St\xE4ng Av"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -623,31 +623,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tutorial
-
-
-    WASD - Move
-
-    E - Pick up
-
-    Space - Jump
-
-    Sprint
-    - Shift
-
-    Document - freezes the enemy for 5 seconds
-
-    Walk into doors
-    to open
-
-    Key - unlocks doors
-
-    Pipe - Smashes windows
-
-    Jump into windows
-    to smash
-
-'
+  m_text: "Tutorial\n\nWASD - F\xF6rflyttning\nE - Ta Upp\nSpace - Hoppa\nShift -
+    Spring\nDokument - fryser den h\xE4ngda mannen i 5 sekunder\nG\xE5 in i d\xF6rrar
+    f\xF6r att \xF6ppna\nNyckel - L\xE5ser upp d\xF6rrar\nR\xF6r - Sl\xE5r S\xF6nder
+    F\xF6nster\nHoppa in i f\xF6nster f\xF6r att sl\xE5 s\xF6nder\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1139,7 +1118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: Spela
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
