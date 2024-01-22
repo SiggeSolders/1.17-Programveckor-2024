@@ -8,9 +8,6 @@ using UnityEngine.Video;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float maxSpeed;
-    public float Speed;
-
     private Collider[] hitColliders;
     private RaycastHit Hit;
 
@@ -20,30 +17,23 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody rigi;
     public GameObject target;
     [SerializeField]
-    public GameObject self;
 
     private bool seePlayer;
     public NavMeshAgent agent;
     [SerializeField]
     GameObject deathText;
     [SerializeField]
-    GameObject crossHair;
+    GameObject crosshair;
     [SerializeField]
-    VideoPlayer death;
-
-
-
-
+    VideoPlayer deathVideo;
 
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
-        Speed = maxSpeed;
         deathText.SetActive(false);
         Time.timeScale = 1;
-        crossHair.SetActive(true);
+        crosshair.SetActive(true);
     }
-
 
     void FixedUpdate()
     {
@@ -51,9 +41,9 @@ public class EnemyMovement : MonoBehaviour
         {
             hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
 
-            foreach(var Hitcollider in hitColliders)
+            foreach (var Hitcollider in hitColliders)
             {
-                if(Hitcollider.tag == "Player")
+                if (Hitcollider.tag == "Player")
                 {
                     target = Hitcollider.gameObject;
                     seePlayer = true;
@@ -62,62 +52,62 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
+            if (Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
             {
-                if(Hit.collider.tag != "Player")
+                if (Hit.collider.tag != "Player")
                 {
                     seePlayer = false;
                 }
                 else
                 {
+                    //Sätter destinationen till spelaren
                     agent.SetDestination(target.transform.position);
                 }
             }
         }
     }
 
+
+    // när den nuddar något, om dens tag är "Player" Spelas videon till när man dör. Sedan startas en timer
     private void OnCollisionEnter(Collision collision)
     {
         GameObject playerDeath = collision.gameObject;
 
-        if(playerDeath.transform.tag == "Player")
+        if (playerDeath.transform.tag == "Player")
         {
-            death.Play();
+            deathVideo.Play();
             Time.timeScale = 0;
             StartCoroutine(Video());
-
-
         }
     }
-
-    public void GoAway()
-    {
-        Debug.Log("GO");
-        agent.speed = 0;
-        StartCoroutine(Delay());
- 
-    }
+    //efter 5 sekunder syns texten där man kan komma tillbaka till menyn och muspekaren blir upplåst
     IEnumerator Video()
     {
-        Time.timeScale = 1;
         yield return new WaitForSeconds(5);
         deathText.SetActive(true);
-        crossHair.SetActive(false);
+        crosshair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    IEnumerator Delay()
-    {
-        Debug.Log("WAINTING");
-        yield return new WaitForSeconds(5);
-        agent.speed = 5;
-    }
-
+    //Den går tillbaka 2 scener till menyn
     public void returnToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
+    //När dokumentet tas upp står den still och en timer startas
+    public void GoAway()
+    {
+        agent.speed = 0;
+        StartCoroutine(Delay());
+    }
+
+    // Efter fem sekunder börjar den röra på sig igen med en fart av 5
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(5);
+        agent.speed = 5;
+    }
 
 }

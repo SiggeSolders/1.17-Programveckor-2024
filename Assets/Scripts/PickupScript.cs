@@ -7,21 +7,23 @@ using static UnityEngine.GraphicsBuffer;
 public class PickupScript : MonoBehaviour
 {
 
-    public Transform Player;
-    public GameObject Item;
-    public Camera Camera;
-    public float range = 2f;
+    public GameObject item;
+    public Camera camera;
+    public float pickupRange = 2f;
     public float open = 100f;
-    public bool holdKey = false;
-    public bool holdPipe = false;
-    public bool holdScroll = false;
+    public bool holdingKey = false;
+    public bool holdingPipe = false;
+    public bool holdingScroll = false;
     string name;
+
     [SerializeField]
     GameObject pickUpText;
     [SerializeField]
-    AudioSource boom;
+    AudioSource pickupSound;
+
     [SerializeField]
-    GameObject daPos;
+    GameObject PickUpPosition;
+
     [SerializeField]
     GameObject Pipe;
     [SerializeField]
@@ -34,10 +36,8 @@ public class PickupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        holdKey = false;
         pickUpText.SetActive(false);
         textComponent = pickUpText.GetComponent<TextMeshProUGUI>();
-        StartCoroutine(Timer());
         enemy = FindAnyObjectByType<EnemyMovement>();
 
     }
@@ -45,6 +45,8 @@ public class PickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Om E trycks på, kommer en raycast skickas.
+
         if (Input.GetKey(KeyCode.E))
         {
             PickUp(); 
@@ -55,59 +57,68 @@ public class PickupScript : MonoBehaviour
     void PickUp()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit, range))
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, pickupRange))
         {
+
+            // Om den tag som sitter på saken som träffas är "Key" Försvinner den, holdingKey blir sann, texts skriver att man tog upp den och en timer startas
             if (hit.transform.tag == "Key")
             {
-                Item = hit.transform.gameObject;
-                name = "Key";
-                Item.SetActive(false);
-                holdKey = true;
+                item = hit.transform.gameObject;
+                name = "Nyckel";
+                item.SetActive(false);
+                holdingKey = true;
                 pickUpText.SetActive(true);
-                textComponent.text = "You Picked Up A " + name + "!";
+                textComponent.text = "Du Plockade Upp En " + name + "!";
                 StartCoroutine(Timer());
             }
+            //samma som nyckeln, men här blir röret en child till kameran, så att den följer efter, Sedan hamnar den på pickupPosition och förlorar sin collider
             if (hit.transform.tag == "Pipe")
             {
-                boom.Play();
-                Pipe.transform.parent = Camera.transform;
-                Pipe.transform.position = daPos.transform.position;
+                pickupSound.Play();
+                Pipe.transform.parent = camera.transform;
+                Pipe.transform.position = PickUpPosition.transform.position;
                 Collider collider = Pipe.GetComponent<BoxCollider>();
                 collider.enabled = false;
-                holdPipe = true;
+                holdingPipe = true;
                 pickUpText.SetActive(true);
-                name = "Pipe";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Rör";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
+
+            // samma som förra if-satsen men en annan variabel så att den andra glasrutan inte ska gå att krossa
             if (hit.transform.tag == "Pipe2")
             {
-                boom.Play();
-                Pipe2.transform.parent = Camera.transform;
-                Pipe2.transform.position = daPos.transform.position;
+                pickupSound.Play();
+                Pipe2.transform.parent = camera.transform;
+                Pipe2.transform.position = PickUpPosition.transform.position;
                 Collider collider2 = Pipe2.GetComponent<BoxCollider>();
                 collider2.enabled = false;
-                holdPipe = true;
+                holdingPipe = true;
                 pickUpText.SetActive(true);
-                name = "Pipe";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Rör";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
+
+            // Samma som nyckeln men dokument.
             if (hit.transform.tag == "Scroll")
             {
-                Item = hit.transform.gameObject;
-                Item.SetActive(false);
+                item = hit.transform.gameObject;
+                item.SetActive(false);
                 enemy.GoAway();
-                holdScroll = true;
+                holdingScroll = true;
                 pickUpText.SetActive(true);
-                name = "Scroll";
-                textComponent.text = "You Picked Up A " + name + "!";
+                name = "Dokument";
+                textComponent.text = "Du Plockade Upp Ett " + name + "!";
                 StartCoroutine(Timer());
             }
 
         }
     }
 
+
+    // Timern tar bort texten efter 5 sekunder
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(5);
