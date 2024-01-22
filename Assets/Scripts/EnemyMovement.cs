@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     GameObject crosshair;
     [SerializeField]
-    VideoPlayer death;
+    VideoPlayer deathVideo;
 
     void Start()
     {
@@ -34,7 +34,6 @@ public class EnemyMovement : MonoBehaviour
         Time.timeScale = 1;
         crosshair.SetActive(true);
     }
-
 
     void FixedUpdate()
     {
@@ -61,32 +60,29 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
+                    //Sätter destinationen till spelaren
                     agent.SetDestination(target.transform.position);
                 }
             }
         }
     }
 
+
+    // när den nuddar något, om dens tag är "Player" Spelas videon till när man dör. Sedan startas en timer
     private void OnCollisionEnter(Collision collision)
     {
         GameObject playerDeath = collision.gameObject;
 
         if (playerDeath.transform.tag == "Player")
         {
-            death.Play();
+            deathVideo.Play();
             Time.timeScale = 0;
             StartCoroutine(Video());
         }
     }
-
-    public void GoAway()
-    {
-        agent.speed = 0;
-        StartCoroutine(Delay());
-    }
+    //efter 5 sekunder syns texten där man kan komma tillbaka till menyn och muspekaren blir upplåst
     IEnumerator Video()
     {
-        Time.timeScale = 1;
         yield return new WaitForSeconds(5);
         deathText.SetActive(true);
         crosshair.SetActive(false);
@@ -94,14 +90,24 @@ public class EnemyMovement : MonoBehaviour
         Cursor.visible = true;
     }
 
+    //Den går tillbaka 2 scener till menyn
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    //När dokumentet tas upp står den still och en timer startas
+    public void GoAway()
+    {
+        agent.speed = 0;
+        StartCoroutine(Delay());
+    }
+
+    // Efter fem sekunder börjar den röra på sig igen med en fart av 5
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(5);
         agent.speed = 5;
     }
 
-    public void returnToMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-    }
 }
