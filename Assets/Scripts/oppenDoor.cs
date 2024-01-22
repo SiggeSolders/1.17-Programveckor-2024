@@ -23,7 +23,7 @@ public class openDoor : MonoBehaviour
         // Difrent get component
         PickupScript pickup = gameObject.GetComponent<PickupScript>();
         GameObject otherGameObject = collision.gameObject;
-        LLLock hitLock = otherGameObject.GetComponent<LLLock>();
+        lockedDoor hitLock = otherGameObject.GetComponent<lockedDoor>();
         glasväg hitglas = otherGameObject.GetComponent<glasväg>();
         GameObject play = collision.gameObject;
 
@@ -43,7 +43,7 @@ public class openDoor : MonoBehaviour
             if (hitglas != null)
             {
                 hitglas.Destroywindow();
-                pickup.holdPipe = false;
+                pickup.holdingPipe = false;
 
             }
         }

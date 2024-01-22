@@ -24,7 +24,7 @@ public class NewBehaviourScript : MonoBehaviour
         GameObject otherGameObject = collision.gameObject;
         //door hitenemy = otherGameObject.GetComponent<door>();
         //door2 hitdoor = otherGameObject.GetComponent<door2>();
-        LLLock hitLock = otherGameObject.GetComponent<LLLock>();
+        lockedDoor hitLock = otherGameObject.GetComponent<lockedDoor>();
         glasväg hitglas = otherGameObject.GetComponent<glasväg>();
         //if (hitenemy != null)
         //{
@@ -32,20 +32,20 @@ public class NewBehaviourScript : MonoBehaviour
 
         //}
         GameObject play = collision.gameObject;
-        if (pickup.holdKey == true)
+        if (pickup.holdingKey == true)
         {
             if (hitLock != null)
             {
-                hitLock.TakeLock();
+                hitLock.unlock();
 
             }
         }
-        if (pickup.holdPipe == true)
+        if (pickup.holdingPipe == true)
         {
             if (hitglas != null)
             {
                 hitglas.Destroywindow();
-                pickup.holdPipe = false;
+                pickup.holdingPipe = false;
 
             }
         }
