@@ -13,7 +13,7 @@ public class StamminaControler : MonoBehaviour
     [SerializeField] private float jumpCost = 20;
     [HideInInspector] public bool hasRegen = true;
     [HideInInspector] public bool isSprinting = false;
-    
+
 
     [Header("Stammina regen")]
     [Range(0, 50)] private float StamminaRegen = 3f;
@@ -33,12 +33,11 @@ public class StamminaControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         if (!isSprinting)
         {
-            if(playerStammina <= maxStammina - 0.01)
+            if (playerStammina <= maxStammina - 0.01)
             {
-                
+
                 playerStammina += StamminaRegen * Time.deltaTime;
                 UptdateStammina(1);
                 if (playerStammina > 10)
@@ -58,7 +57,7 @@ public class StamminaControler : MonoBehaviour
 
     public void StamminaJump()
     {
-        if(playerStammina >= jumpCost)
+        if (playerStammina >= jumpCost)
         {
             playerStammina -= jumpCost;
             playerMovement.PlayerJump();
@@ -70,7 +69,6 @@ public class StamminaControler : MonoBehaviour
     {
         if (true)
         {
-            print("drain");
             isSprinting = true;
             playerStammina -= StamminaDrain * Time.deltaTime;
             UptdateStammina(1);
