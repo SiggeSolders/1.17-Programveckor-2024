@@ -36,7 +36,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             if (hitLock != null)
             {
-                hitLock.TakeLock();
+                hitLock.unlock();
 
             }
         }
