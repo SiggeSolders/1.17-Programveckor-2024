@@ -8,9 +8,6 @@ using UnityEngine.Video;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float maxSpeed;
-    public float speed;
-
     private Collider[] hitColliders;
     private RaycastHit Hit;
 
@@ -20,7 +17,6 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody rigi;
     public GameObject target;
     [SerializeField]
-    public GameObject self;
 
     private bool seePlayer;
     public NavMeshAgent agent;
@@ -29,20 +25,19 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     GameObject crosshair;
     [SerializeField]
-    VideoPlayer death;
+    VideoPlayer deathVideo;
 
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
-        speed = maxSpeed;
         deathText.SetActive(false);
         Time.timeScale = 1;
         crosshair.SetActive(true);
     }
 
-
     void FixedUpdate()
     {
+        //Letar efter spelaren i en sphär. Om den inte ser spelar gör den inget, annars börjar den jagar spelaren
         if (!seePlayer)
         {
             hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
@@ -58,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            //Börjar jaga spelaren
             if (Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
             {
                 if (Hit.collider.tag != "Player")
@@ -66,32 +62,34 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    agent.SetDestination(target.transform.position);
+                    StartCoroutine(AttackDelay());
                 }
             }
         }
     }
 
+    //väntar i 3 sekunder innan den sätter destinationen till spelaren
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(3);
+        agent.SetDestination(target.transform.position);
+    }
+
+    // när den nuddar något, om dens tag är "Player" Spelas videon till när man dör. Sedan startas en timer
     private void OnCollisionEnter(Collision collision)
     {
         GameObject playerDeath = collision.gameObject;
 
         if (playerDeath.transform.tag == "Player")
         {
-            death.Play();
+            deathVideo.Play();
             Time.timeScale = 0;
             StartCoroutine(Video());
         }
     }
-
-    public void GoAway()
-    {
-        agent.speed = 0;
-        StartCoroutine(Delay());
-    }
+    //efter 5 sekunder syns texten där man kan komma tillbaka till menyn och muspekaren blir upplåst
     IEnumerator Video()
     {
-        Time.timeScale = 1;
         yield return new WaitForSeconds(5);
         deathText.SetActive(true);
         crosshair.SetActive(false);
@@ -99,14 +97,24 @@ public class EnemyMovement : MonoBehaviour
         Cursor.visible = true;
     }
 
+    //Den går tillbaka 2 scener till menyn
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    //När dokumentet tas upp står den still och en timer startas
+    public void GoAway()
+    {
+        agent.speed = 0;
+        StartCoroutine(Delay());
+    }
+
+    // Efter fem sekunder börjar den röra på sig igen med en fart av 5
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(5);
         agent.speed = 5;
     }
 
-    public void returnToMenu()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-    }
 }

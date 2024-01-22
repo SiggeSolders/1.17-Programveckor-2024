@@ -17,11 +17,14 @@ public class MainManu : MonoBehaviour
         
     }
 
+    // Den byter till nästa scen
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+
+    // Den avslutar programmet
     public void EndGame()
     {
         Application.Quit();
