@@ -60,13 +60,18 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    //Sätter destinationen till spelaren
-                    agent.SetDestination(target.transform.position);
+                    StartCoroutine(AttackDelay());
                 }
             }
         }
     }
 
+    //väntar i 3 sekunder innan den sätter destinationen till spelaren
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(3);
+        agent.SetDestination(target.transform.position);
+    }
 
     // när den nuddar något, om dens tag är "Player" Spelas videon till när man dör. Sedan startas en timer
     private void OnCollisionEnter(Collision collision)

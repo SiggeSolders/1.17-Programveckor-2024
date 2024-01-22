@@ -10,6 +10,7 @@ public class WinScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Texten syns inte i början
         WinText.SetActive(false);
     }
 
@@ -19,6 +20,7 @@ public class WinScript : MonoBehaviour
         
     }
 
+    // när något nuddar den ökar scenen med 1
     private void OnCollisionEnter(Collision collision)
     {
 
