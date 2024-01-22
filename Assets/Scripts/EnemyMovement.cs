@@ -9,7 +9,7 @@ using UnityEngine.Video;
 public class EnemyMovement : MonoBehaviour
 {
     public float maxSpeed;
-    public float Speed;
+    public float speed;
 
     private Collider[] hitColliders;
     private RaycastHit Hit;
@@ -27,21 +27,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     GameObject deathText;
     [SerializeField]
-    GameObject crossHair;
+    GameObject crosshair;
     [SerializeField]
     VideoPlayer death;
-
-
-
-
 
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
-        Speed = maxSpeed;
+        speed = maxSpeed;
         deathText.SetActive(false);
         Time.timeScale = 1;
-        crossHair.SetActive(true);
+        crosshair.SetActive(true);
     }
 
 
@@ -51,9 +47,9 @@ public class EnemyMovement : MonoBehaviour
         {
             hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
 
-            foreach(var Hitcollider in hitColliders)
+            foreach (var Hitcollider in hitColliders)
             {
-                if(Hitcollider.tag == "Player")
+                if (Hitcollider.tag == "Player")
                 {
                     target = Hitcollider.gameObject;
                     seePlayer = true;
@@ -62,9 +58,9 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
+            if (Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
             {
-                if(Hit.collider.tag != "Player")
+                if (Hit.collider.tag != "Player")
                 {
                     seePlayer = false;
                 }
@@ -80,36 +76,31 @@ public class EnemyMovement : MonoBehaviour
     {
         GameObject playerDeath = collision.gameObject;
 
-        if(playerDeath.transform.tag == "Player")
+        if (playerDeath.transform.tag == "Player")
         {
             death.Play();
             Time.timeScale = 0;
             StartCoroutine(Video());
-
-
         }
     }
 
     public void GoAway()
     {
-        Debug.Log("GO");
         agent.speed = 0;
         StartCoroutine(Delay());
- 
     }
     IEnumerator Video()
     {
         Time.timeScale = 1;
         yield return new WaitForSeconds(5);
         deathText.SetActive(true);
-        crossHair.SetActive(false);
+        crosshair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
     IEnumerator Delay()
     {
-        Debug.Log("WAINTING");
         yield return new WaitForSeconds(5);
         agent.speed = 5;
     }
@@ -118,6 +109,4 @@ public class EnemyMovement : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
-
-
 }
