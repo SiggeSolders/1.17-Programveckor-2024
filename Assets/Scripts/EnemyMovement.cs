@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        //Letar efter spelaren i en sphär. Om den inte ser spelar gör den inget, annars börjar den jagar spelaren
         if (!seePlayer)
         {
             hitColliders = Physics.OverlapSphere(transform.position, detectionRange);
@@ -52,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            //Börjar jaga spelaren
             if (Physics.Raycast(transform.position, (target.transform.position - transform.position), out Hit, sightRange))
             {
                 if (Hit.collider.tag != "Player")
