@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class StamminaControler : MonoBehaviour
 {
-    [HideInInspector] public PlayerMovement _PlayerMovement;
+    [HideInInspector] public PlayerMovement playerMovement;
     [Header("Stammina")]
     public float playerStammina = 100.0f;
     [SerializeField] public float maxStammina = 100.0f;
-    [SerializeField] private float JumpCost = 20;
+    [SerializeField] private float jumpCost = 20;
     [HideInInspector] public bool hasRegen = true;
-    [HideInInspector] public bool Sprinting = false;
+    [HideInInspector] public bool isSprinting = false;
     
 
     [Header("Stammina regen")]
@@ -27,14 +27,14 @@ public class StamminaControler : MonoBehaviour
     private PlayerMovement PlayerController;
     void Start()
     {
-        _PlayerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
        
-        if (!Sprinting)
+        if (!isSprinting)
         {
             if(playerStammina <= maxStammina - 0.01)
             {
@@ -43,13 +43,13 @@ public class StamminaControler : MonoBehaviour
                 UptdateStammina(1);
                 if (playerStammina > 10)
                 {
-                    _PlayerMovement.runCooldown = false;
+                    playerMovement.runCooldown = false;
                 }
             }
 
             if (playerStammina >= maxStammina)
             {
-                _PlayerMovement.setRunsSpeed(_PlayerMovement.walkspeed);
+                playerMovement.setRunsSpeed(playerMovement.walkspeed);
                 slidercanvasGroup.alpha = 0;
                 hasRegen = true;
             }
@@ -58,10 +58,10 @@ public class StamminaControler : MonoBehaviour
 
     public void StamminaJump()
     {
-        if(playerStammina >= JumpCost)
+        if(playerStammina >= jumpCost)
         {
-            playerStammina -= JumpCost;
-            _PlayerMovement.PlayerJump();
+            playerStammina -= jumpCost;
+            playerMovement.PlayerJump();
             UptdateStammina(1);
         }
     }
@@ -71,15 +71,15 @@ public class StamminaControler : MonoBehaviour
         if (true)
         {
             print("drain");
-            Sprinting = true;
+            isSprinting = true;
             playerStammina -= StamminaDrain * Time.deltaTime;
             UptdateStammina(1);
             if (playerStammina <= 0)
             {
                 hasRegen = false;
-                _PlayerMovement.setRunsSpeed(_PlayerMovement.walkspeed);
-                _PlayerMovement.state = PlayerMovement.MovementState.walking;
-                _PlayerMovement.runCooldown = true;
+                playerMovement.setRunsSpeed(playerMovement.walkspeed);
+                playerMovement.state = PlayerMovement.MovementState.walking;
+                playerMovement.runCooldown = true;
                 slidercanvasGroup.alpha = 0;
             }
         }

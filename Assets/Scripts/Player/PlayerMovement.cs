@@ -20,21 +20,21 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode Sprintkey = KeyCode.LeftShift;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    bool Grounded;
     
     public bool runCooldown = false;
 
     public Transform orientetion;
 
-    float horizontalImput;
+    float horizontalInput;
     float verticalInput;
 
-    Vector3 movedirection;
+    Vector3 moveDirection;
 
     Rigidbody rb;
 
@@ -61,14 +61,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Ground Check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f));
         MyInput();
         SpeedControl();
         StateHandler();
 
         //Drag
-        if (grounded)
+        if (Grounded)
         {
             rb.drag = groundDrag;
         }
@@ -85,12 +85,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void StateHandler()
     {
-        if(grounded && Input.GetKey(Sprintkey) && _stamminaControler.playerStammina > 0 && runCooldown == false)
+        if(Grounded && Input.GetKey(sprintKey) && _stamminaControler.playerStammina > 0 && runCooldown == false)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintspeed;
 
-        }else if (grounded)
+        }else if (Grounded)
         {
             state = MovementState.walking;
             moveSpeed = walkspeed;
@@ -102,22 +102,22 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MyInput()
     {
-        horizontalImput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         if(state == MovementState.sprinting)
         {
             if(_stamminaControler.playerStammina > 0)
             {
-                _stamminaControler.Sprinting = true;
+                _stamminaControler.isSprinting = true;
                 _stamminaControler.IsSprinting();
             }
         }
         if(state == MovementState.walking)
         {
-            _stamminaControler.Sprinting = false;
+            _stamminaControler.isSprinting = false;
         }
         //Jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && readyToJump && Grounded)
         {
             _stamminaControler.StamminaJump();
         }
@@ -133,18 +133,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        movedirection = orientetion.forward * verticalInput + orientetion.right * horizontalImput;
+        moveDirection = orientetion.forward * verticalInput + orientetion.right * horizontalInput;
 
         //On ground
-        if (grounded)
+        if (Grounded)
         {
-            rb.AddForce(movedirection * moveSpeed * 10, ForceMode.Force);
+            rb.AddForce(moveDirection * moveSpeed * 10, ForceMode.Force);
         }
 
         //In Air
-        else if (!grounded)
+        else if (!Grounded)
         {
-            rb.AddForce(movedirection * moveSpeed * 10 * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection * moveSpeed * 10 * airMultiplier, ForceMode.Force);
         }
     }
 
