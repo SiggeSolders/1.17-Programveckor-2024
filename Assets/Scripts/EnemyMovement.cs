@@ -8,9 +8,6 @@ using UnityEngine.Video;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float maxSpeed;
-    public float speed;
-
     private Collider[] hitColliders;
     private RaycastHit Hit;
 
@@ -20,7 +17,6 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody rigi;
     public GameObject target;
     [SerializeField]
-    public GameObject self;
 
     private bool seePlayer;
     public NavMeshAgent agent;
@@ -34,7 +30,6 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
-        speed = maxSpeed;
         deathText.SetActive(false);
         Time.timeScale = 1;
         crosshair.SetActive(true);
