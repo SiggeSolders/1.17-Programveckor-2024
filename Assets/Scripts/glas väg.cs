@@ -6,29 +6,29 @@ public class glasväg : MonoBehaviour
 {
     // Start is called before the first frame update'
     [SerializeField]
-    GameObject Glas_pliter1;
+    GameObject glas_shard1;
     [SerializeField]
-    GameObject Glas_pliter2;
+    GameObject glas_shard2;
     [SerializeField]
-    GameObject Glas_pliter3;
+    GameObject glas_shard3;
     [SerializeField]
-    GameObject Glas_pliter4;
+    GameObject glas_shard4;
     [SerializeField]
-    GameObject Glas_pliter5;
+    GameObject glas_shard5;
     [SerializeField]
-    GameObject Glas_pliter6;
+    GameObject glas_shard6;
     [SerializeField]
     GameObject Pipe;
     public void Destroywindow()
     {
-
+        //destoy glas and spawn shards
         Destroy(gameObject);
-        Glas_pliter1.SetActive(true);
-        Glas_pliter2.SetActive(true);
-        Glas_pliter3.SetActive(true);
-        Glas_pliter4.SetActive(true);
-        Glas_pliter5.SetActive(true);
-        Glas_pliter6.SetActive(true);
+        glas_shard1.SetActive(true);
+        glas_shard2.SetActive(true);
+        glas_shard3.SetActive(true);
+        glas_shard4.SetActive(true);
+        glas_shard5.SetActive(true);
+        glas_shard6.SetActive(true);
         Pipe.SetActive(false);
         //Instantiate(Glas_pliter, transform.position + new Vector3(0, 0, 1), Quaternion.identity);
 
@@ -36,13 +36,13 @@ public class glasväg : MonoBehaviour
     }
     void Start()
     {
-        
-        Glas_pliter1.SetActive(false);
-        Glas_pliter2.SetActive(false);
-        Glas_pliter3.SetActive(false);
-        Glas_pliter6.SetActive(false);
-        Glas_pliter5.SetActive(false);
-        Glas_pliter4.SetActive(false);
+
+        glas_shard1.SetActive(false);
+        glas_shard2.SetActive(false);
+        glas_shard3.SetActive(false);
+        glas_shard6.SetActive(false);
+        glas_shard5.SetActive(false);
+        glas_shard4.SetActive(false);
     }
 
     // Update is called once per frame
