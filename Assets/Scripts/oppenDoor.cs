@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class openDoor : MonoBehaviour
+public class oppenDoor : MonoBehaviour
 {
     // Start is called before the first frame update
    
@@ -24,7 +24,7 @@ public class openDoor : MonoBehaviour
         PickupScript pickup = gameObject.GetComponent<PickupScript>();
         GameObject otherGameObject = collision.gameObject;
         lockedDoor hitLock = otherGameObject.GetComponent<lockedDoor>();
-        glasväg hitglas = otherGameObject.GetComponent<glasväg>();
+        glasWall hitglas = otherGameObject.GetComponent<glasWall>();
         GameObject play = collision.gameObject;
 
         //Send signal to door to run door script
