@@ -24,7 +24,7 @@ public class oppenDoor : MonoBehaviour
         PickupScript pickup = gameObject.GetComponent<PickupScript>();
         GameObject otherGameObject = collision.gameObject;
         lockedDoor hitLock = otherGameObject.GetComponent<lockedDoor>();
-        glasväg hitglas = otherGameObject.GetComponent<glasväg>();
+        glasWall hitglas = otherGameObject.GetComponent<glasWall>();
         GameObject play = collision.gameObject;
 
         //Send signal to door to run door script
