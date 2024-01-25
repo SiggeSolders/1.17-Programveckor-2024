@@ -14,7 +14,7 @@ public class lockedDoor : MonoBehaviour
     
     public void unlock()
     {
-        //Opens door
+        //Makes opening door possible door.
         doorHp -= 1;
         if (doorHp == 0)
         {
