@@ -71,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
     //väntar i 3 sekunder innan den sätter destinationen till spelaren
     IEnumerator AttackDelay()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         agent.SetDestination(target.transform.position);
     }
 
