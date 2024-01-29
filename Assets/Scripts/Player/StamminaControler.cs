@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class StamminaControler : MonoBehaviour
 {
     [HideInInspector] public PlayerMovement playerMovement;
