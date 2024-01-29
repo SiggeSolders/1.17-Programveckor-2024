@@ -63,6 +63,7 @@ public class PickupScript : MonoBehaviour
             // Om den tag som sitter på saken som träffas är "Key" Försvinner den, holdingKey blir sann, texts skriver att man tog upp den och en timer startas
             if (hit.transform.tag == "Key")
             {
+                Debug.Log("korv");
                 item = hit.transform.gameObject;
                 name = "Nyckel";
                 item.SetActive(false);
@@ -104,6 +105,7 @@ public class PickupScript : MonoBehaviour
             // Samma som nyckeln men dokument.
             if (hit.transform.tag == "Scroll")
             {
+                Debug.Log("mos");
                 item = hit.transform.gameObject;
                 item.SetActive(false);
                 enemy.GoAway();
