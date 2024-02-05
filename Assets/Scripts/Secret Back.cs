@@ -20,6 +20,9 @@ public class SecretBack : MonoBehaviour
     // Går tillbaka till menyn
     private void OnCollisionEnter(Collision collision)
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
+        
     }
 }
