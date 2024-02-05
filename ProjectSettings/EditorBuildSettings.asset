@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Outro.unity
     guid: b2f349f15bbf89e4d80d9dde1df78b22
+  - enabled: 1
+    path: Assets/Scenes/w_secret_good_ending.unity
+    guid: a4f1e5731853b274cbd2cdfbe10649f7
   m_configObjects: {}
