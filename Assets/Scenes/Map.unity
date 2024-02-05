@@ -5487,7 +5487,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1379984795306296945, guid: e4ff5bd3b13b98146b076dbe8a905e71, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1309988335}
   m_SourcePrefab: {fileID: 100100000, guid: e4ff5bd3b13b98146b076dbe8a905e71, type: 3}
 --- !u!1001 &589571526
 PrefabInstance:
@@ -14233,6 +14236,30 @@ PrefabInstance:
       addedObject: {fileID: 2008501102}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a471915af398d45a1a1242924d39d2, type: 3}
+--- !u!1 &1309988329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1379984795306296945, guid: e4ff5bd3b13b98146b076dbe8a905e71, type: 3}
+  m_PrefabInstance: {fileID: 585464952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309988335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309988329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212fad061a81d03498023cfe2ee7e0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glas_shard1: {fileID: 1995810577}
+  glas_shard2: {fileID: 359465221}
+  glas_shard3: {fileID: 262442971}
+  glas_shard4: {fileID: 855219699}
+  glas_shard5: {fileID: 1619033974}
+  glas_shard6: {fileID: 422607974}
+  Pipe: {fileID: 190882825}
 --- !u!1 &1325319722
 GameObject:
   m_ObjectHideFlags: 0
