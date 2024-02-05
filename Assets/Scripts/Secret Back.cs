@@ -17,6 +17,7 @@ public class SecretBack : MonoBehaviour
         
     }
 
+    // Går tillbaka till menyn
     private void OnCollisionEnter(Collision collision)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);

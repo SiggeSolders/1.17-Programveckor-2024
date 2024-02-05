@@ -5,6 +5,7 @@ using static PlayerMovement;
 
 public class HeadBob : MonoBehaviour
 {
+
     private float timer = 0.0f;
     float bobbingSpeed = 0.07f;
     float bobbingAmount = 0.1f;
@@ -21,6 +22,7 @@ public class HeadBob : MonoBehaviour
 
         Vector3 cSharpConversion = transform.localPosition;
 
+        //när den springer, öka headbob
         if (playerMovement.state == MovementState.sprinting)
         {
             bobbingAmount = 0.17f;
