@@ -18,6 +18,7 @@ public class Secretlevel : MonoBehaviour
         
     }
 
+    // när den nuddas, går den till hemliga nivån.
     private void OnCollisionEnter(Collision collision)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
