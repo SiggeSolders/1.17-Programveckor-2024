@@ -6,7 +6,7 @@ using static PlayerMovement;
 public class HeadBob : MonoBehaviour
 {
     private float timer = 0.0f;
-    float bobbingSpeed = 0.05f;
+    float bobbingSpeed = 0.07f;
     float bobbingAmount = 0.1f;
     float midpoint = 2.0f;
     [SerializeField]
@@ -21,6 +21,14 @@ public class HeadBob : MonoBehaviour
 
         Vector3 cSharpConversion = transform.localPosition;
 
+        if (playerMovement.state == MovementState.sprinting)
+        {
+            bobbingAmount = 0.17f;
+        }
+        else
+        {
+            bobbingAmount = 0.07f;
+        }
 
         if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
         {
