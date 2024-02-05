@@ -21,16 +21,6 @@ public class HeadBob : MonoBehaviour
 
         Vector3 cSharpConversion = transform.localPosition;
 
-        if (playerMovement.state == MovementState.sprinting)
-        {
-            bobbingAmount = 0.2f;
-            bobbingSpeed = 1;
-        }
-        else
-        {
-            bobbingSpeed = 0.05f;
-            bobbingAmount = 0.1f;
-        }
 
         if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
         {
