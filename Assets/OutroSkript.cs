@@ -30,6 +30,9 @@ public class OutroSkript : MonoBehaviour
     // Update is called once per frame
     IEnumerator Timer()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Musik.Play();
         Outro1.SetActive(true);
         while (Alpha.alpha < 1)
