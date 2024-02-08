@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Secretlevel : MonoBehaviour
 {
+    [SerializeField]
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,12 @@ public class Secretlevel : MonoBehaviour
     // när den nuddas, går den till hemliga nivån.
     private void OnCollisionEnter(Collision collision)
     {
+        player = collision.gameObject;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        if(collision.transform.tag == "Player")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
+     
     }
 }
