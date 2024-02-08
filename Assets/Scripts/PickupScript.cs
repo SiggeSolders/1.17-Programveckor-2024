@@ -80,6 +80,7 @@ public class PickupScript : MonoBehaviour
                 pickupSound.Play();
                 Pipe.transform.parent = orientation.transform;
                 Pipe.transform.position = pickUpPosition.transform.position;
+                Pipe.transform.rotation = new Quaternion();
                 Collider collider = Pipe.GetComponent<BoxCollider>();
                 collider.enabled = false;
                 holdingPipe = true;
@@ -95,6 +96,7 @@ public class PickupScript : MonoBehaviour
                 pickupSound.Play();
                 Pipe2.transform.parent = orientation.transform;
                 Pipe2.transform.position = pickUpPosition.transform.position;
+                Pipe.transform.rotation = new Quaternion(0, 0, 0, 0);
                 Collider collider2 = Pipe2.GetComponent<BoxCollider>();
                 collider2.enabled = false;
                 holdingPipe = true;
