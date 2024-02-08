@@ -22,7 +22,9 @@ public class PickupScript : MonoBehaviour
     AudioSource pickupSound;
 
     [SerializeField]
-    GameObject PickUpPosition;
+    GameObject pickUpPosition;
+    [SerializeField]
+    GameObject orientation;
 
     [SerializeField]
     GameObject Pipe;
@@ -76,8 +78,8 @@ public class PickupScript : MonoBehaviour
             if (hit.transform.tag == "Pipe")
             {
                 pickupSound.Play();
-                Pipe.transform.parent = gameObject.transform;
-                Pipe.transform.position = PickUpPosition.transform.position;
+                Pipe.transform.parent = orientation.transform;
+                Pipe.transform.position = pickUpPosition.transform.position;
                 Collider collider = Pipe.GetComponent<BoxCollider>();
                 collider.enabled = false;
                 holdingPipe = true;
@@ -91,8 +93,8 @@ public class PickupScript : MonoBehaviour
             if (hit.transform.tag == "Pipe2")
             {
                 pickupSound.Play();
-                Pipe2.transform.parent = camera.transform;
-                Pipe2.transform.position = PickUpPosition.transform.position;
+                Pipe2.transform.parent = orientation.transform;
+                Pipe2.transform.position = pickUpPosition.transform.position;
                 Collider collider2 = Pipe2.GetComponent<BoxCollider>();
                 collider2.enabled = false;
                 holdingPipe = true;
