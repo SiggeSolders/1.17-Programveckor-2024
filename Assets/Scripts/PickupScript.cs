@@ -76,7 +76,7 @@ public class PickupScript : MonoBehaviour
             if (hit.transform.tag == "Pipe")
             {
                 pickupSound.Play();
-                Pipe.transform.parent = camera.transform;
+                Pipe.transform.parent = gameObject.transform;
                 Pipe.transform.position = PickUpPosition.transform.position;
                 Collider collider = Pipe.GetComponent<BoxCollider>();
                 collider.enabled = false;
