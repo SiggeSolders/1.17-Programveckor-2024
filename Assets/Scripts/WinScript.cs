@@ -28,7 +28,6 @@ public class WinScript : MonoBehaviour
     {
         this.timeElapsed = DateTime.Now - startTime;
 
-        Debug.Log(timeElapsed.ToString());
     }
 
     // när något nuddar den ökar scenen med 1
