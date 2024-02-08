@@ -1180,7 +1180,7 @@ MonoBehaviour:
   holdingPipe: 0
   holdingScroll: 0
   pickUpText: {fileID: 583365829}
-  pickupSound: {fileID: 143475725}
+  pickupSound: {fileID: 1152660383}
   pickUpPosition: {fileID: 1012776195}
   orientation: {fileID: 367403788}
   Pipe: {fileID: 93339367}
