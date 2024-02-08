@@ -83,14 +83,15 @@ public class EnemyMovement : MonoBehaviour
         if (playerDeath.transform.tag == "Player")
         {
             deathVideo.Play();
-            Time.timeScale = 0;
             StartCoroutine(Video());
         }
     }
     //efter 5 sekunder syns texten där man kan komma tillbaka till menyn och muspekaren blir upplåst
     IEnumerator Video()
     {
+        agent.speed = 0;
         yield return new WaitForSeconds(5);
+        Debug.Log("kaka");
         deathText.SetActive(true);
         crosshair.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
