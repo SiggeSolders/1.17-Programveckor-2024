@@ -1181,7 +1181,8 @@ MonoBehaviour:
   holdingScroll: 0
   pickUpText: {fileID: 583365829}
   pickupSound: {fileID: 143475725}
-  PickUpPosition: {fileID: 1012776195}
+  pickUpPosition: {fileID: 1012776195}
+  orientation: {fileID: 367403788}
   Pipe: {fileID: 93339367}
   Pipe2: {fileID: 190882825}
 --- !u!82 &143475725
@@ -3130,6 +3131,11 @@ Rigidbody:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fe4c9931540fdb0438f04b00c1ac6283, type: 3}
   m_PrefabInstance: {fileID: 702787763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &367403788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7581413250316225135, guid: dc0dad991e982014a9601140be69c04a, type: 3}
+  m_PrefabInstance: {fileID: 143475717}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &367952031
 GameObject:
